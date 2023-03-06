@@ -56,9 +56,10 @@
     <style>
         html {
             background-color: #222222;
-            < !--BackgroundStart-->background: url("<!--BackgroundUrl-->") fixed no-repeat, #222222;
-            < !--BackgroundEnd-->margin: 0;
+            background-repeat: no-repeat;
             background-size: cover;
+            background-attachment: fixed;
+            background-image: url("<!--BackgroundUrl-->") !important;
         }
 
         body {
@@ -1404,7 +1405,7 @@
                 filemd5 = spark.end();
                 td2.innerHTML='md5: '+filemd5;
                 delete uploading[upbigfilename];
-                upbigfilename = filemd5+ext;
+                upbigfilename = encodeURIComponent((file.webkitRelativePath||file.name));
                 uploading[upbigfilename] = i;
 <!--GuestEnd-->
             td2.innerHTML='<!--constStr@GetUploadLink--> ...';
